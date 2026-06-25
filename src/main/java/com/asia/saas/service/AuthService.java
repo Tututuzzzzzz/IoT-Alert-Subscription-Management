@@ -30,7 +30,8 @@ public class AuthService {
             throw new IllegalArgumentException("Email is already registered");
         }
 
-        Role role = request.getRole() != null ? request.getRole() : Role.ROLE_USER;
+        // Always assign ROLE_USER — never trust role from client request
+        Role role = Role.ROLE_USER;
 
         User user = User.builder()
                 .username(request.getUsername())
@@ -43,6 +44,7 @@ public class AuthService {
         String jwtToken = jwtService.generateToken(savedUser);
 
         return AuthResponse.builder()
+                .id(savedUser.getId())
                 .token(jwtToken)
                 .username(savedUser.getUsername())
                 .email(savedUser.getEmail())
@@ -64,6 +66,7 @@ public class AuthService {
         String jwtToken = jwtService.generateToken(user);
 
         return AuthResponse.builder()
+                .id(user.getId())
                 .token(jwtToken)
                 .username(user.getUsername())
                 .email(user.getEmail())
