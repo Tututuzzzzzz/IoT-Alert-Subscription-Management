@@ -1,9 +1,13 @@
-HELP.md
+# Build and Output
 target/
 .mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
 
+# IDE configurations
 ### STS ###
 .apt_generated
 .classpath
@@ -14,10 +18,11 @@ target/
 .sts4-cache
 
 ### IntelliJ IDEA ###
-.idea
+.idea/
 *.iws
 *.iml
 *.ipr
+out/
 
 ### NetBeans ###
 /nbproject/private/
@@ -25,12 +30,35 @@ target/
 /dist/
 /nbdist/
 /.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
 
 ### VS Code ###
 .vscode/
 
+# Configuration and Secrets
 application.properties
+application-local.properties
+application-dev.properties
+.env
+.env.local
+*.env
+*.properties.local
+
+# Logs and Temporary files
+*.log
+logs/
+temp/
+tmp/
+hs_err_pid*
+replay_pid*
+
+# System-specific files
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+
+# Project-specific ignored files
 .agent
+kien-truc-he-thong.jpeg
+HELP.md
